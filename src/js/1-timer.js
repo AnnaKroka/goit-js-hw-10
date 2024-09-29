@@ -41,7 +41,7 @@ const options = {
       };
 
 
-flatpickr('.time-input', options);
+flatpickr('#datetime-picker', options);
 
 function convertMs(ms) {
     // Number of milliseconds per unit of time
@@ -99,11 +99,11 @@ stop() {
 }
 }
 
-function updateTimeValue({days, hours, minutes, seconds}) {
-    dayData.innerHTML = days;
-    hourData.innerHTML = hours;
-    minuteData.innerHTML = minutes;
-    secData.innerHTML = seconds;
+function onTick ({days, hours, minutes, seconds}) {
+    dayData.innerHTML = addLeadingZero(days);
+    hourData.innerHTML = addLeadingZero(hours);
+    minuteData.innerHTML = addLeadingZero(minutes);
+    secData.innerHTML = addLeadingZero(seconds);
 }
 
 const addLeadingZero = value => {
@@ -111,7 +111,7 @@ const addLeadingZero = value => {
 };
 
 
-  const timer = new Timer(updateTimeValue);
+  const timer = new Timer(onTick);
   console.log(timer);
 
   startBtn.addEventListener('click', () => timer.start());

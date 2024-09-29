@@ -18,8 +18,9 @@ const formSubmit = event => {
         setTimeout(() => {
           if (chooseBtn === 'fulfilled') {
             resolve(delayTime);
-          }
+          } else {
           reject(delayTime);
+          }
         }, delayTime);
       });
       console.log(promise);
